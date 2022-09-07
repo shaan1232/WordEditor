@@ -44,7 +44,7 @@ export default function WordEditor() {
     if (socket == null || quill == null) return;
 
     const interval = setInterval(() => {
-      socket.emit("save-ducument", quill.getContents());
+      socket.emit("save-document", quill.getContents());
     }, SAVE_INTERVAL_MS);
 
     return () => {
@@ -81,10 +81,10 @@ export default function WordEditor() {
       quill.updateContents(delta);
     };
 
-    socket.on("recieve-changes", handler);
+    socket.on("receive-changes", handler);
 
     return () => {
-      socket.off("recieve-changes", handler);
+      socket.off("receive-changes", handler);
     };
   }, [socket, quill]);
   /////////////////////////

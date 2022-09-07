@@ -2,12 +2,7 @@ const mongoose = require("mongoose");
 const Document = require("./Document");
 const MONGODB_HOST = "mongodb://localhost/word-editor";
 mongoose
-  .connect(MONGODB_HOST, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  })
+  .connect(MONGODB_HOST, {})
   .then((db) => console.log("Db connection established"))
   .catch((err) => console.log(err));
 
@@ -25,7 +20,7 @@ io.on("connection", (socket) => {
     socket.emit("load-document", document.data);
     // allows us to send changes to a specific room when we broadcast them
     socket.on("send-changes", (delta) => {
-      socket.broadcast.to(documentId).emit("recieve-changes", delta);
+      socket.broadcast.to(documentId).emit("receive-changes", delta);
     });
 
     socket.on("save-document", async (data) => {
