@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const Document = require("./Document");
-const MONGODB_HOST = "mongodb://localhost/word-editor";
+
 mongoose
-  .connect(MONGODB_HOST, {})
-  .then((db) => console.log("Db connection established"))
-  .catch((err) => console.log(err));
+  .connect("mongodb://localhost/word-editor", {})
+
 
 const io = require("socket.io")(3001, {
   cors: {
@@ -15,7 +14,7 @@ const io = require("socket.io")(3001, {
 
 io.on("connection", (socket) => {
   socket.on("get-document", async (documentId) => {
-    const document = findOrCreateDocument(documentId);
+    const document = await findOrCreateDocument(documentId);
     socket.join(documentId);
     socket.emit("load-document", document.data);
     // allows us to send changes to a specific room when we broadcast them

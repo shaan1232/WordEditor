@@ -7,6 +7,14 @@
 :root {
   --headerColor: #e9e9e9;
   --paperColor: white;
+
+}
+
+.buttoncontainer{
+  margin-top: 5px;
+  display: block;
+ 
+
 }
 
 body {
@@ -22,6 +30,29 @@ body {
   animation: gradient 15s ease infinite;
 }
 
+.button{
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  width: 50%;
+  height: 50px;
+  border: 1px solid #313131;
+  cursor: pointer;
+  margin-inline-start: 25%;
+
+  
+}
+
+.green {
+  background-color: #4CAF50; /* Green */
+
+}
+.red{
+  background-color: #d41010; /* Red */
+
+}
 @keyframes gradient {
   0% {
     background-position: 0% 50%;

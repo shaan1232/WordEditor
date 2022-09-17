@@ -34,8 +34,8 @@ export default function WordEditor() {
     if (socket == null || quill == null) return;
 
     socket.once("load-document", (document) => {
-      quill.setContents(document);
-      quill.enable(); //disables text editor until loaded.
+      quill.setContents(document); // load up text editor to have contents in it.
+      quill.enable(); // enables editing once loaded.
     });
     socket.emit("get-document", documentId);
   }, [socket, quill, documentId]);
