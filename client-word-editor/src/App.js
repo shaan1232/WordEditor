@@ -15,22 +15,35 @@ function App() {
 
   return (
     <Router>
-      <div class = 'buttoncontainer'>
-      <Routes>
-        <Route
-          path="/"
-          //element={<a href={`/documents/${uuidV4()}`}>create document</a>}
-          element={<a href={`/documents/${uuidV4()}`}><button class="button green">Create Document</button></a>}/>
-        <Route path="/documents/:id" element={<WordEditor />} />
-      </Routes>
+      <div class='buttoncontainer'>
+        <Routes>
+          <Route
+            path="/"
+            //element={<a href={`/documents/${uuidV4()}`}>create document</a>}
+            element={<a href={`/documents/${uuidV4()}`}><button class="button green">Create Document</button></a>} />
+          <Route path="/documents/:id" element={<WordEditor />} />
+        </Routes>
       </div>
-  
-      <div class = 'buttoncontainer'>   
-      <button id = "joinRoomButton" class="button red">Join Room By ID</button>
-          
-      </div> 
+
+      <div class='buttoncontainer'>
+
+
+        <Routes>
+          <Route
+            path="/"
+            element={<a href={`/join_room/`}><button class="button red">Join Room By ID</button></a>} />
+          <Route path="/join_room/" element={<JoinRoomVerification />} />
+
+
+        </Routes>
+
+
+
+
+
+      </div>
     </Router>
-    
+
   );
 }
 
